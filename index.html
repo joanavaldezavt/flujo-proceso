@@ -62,6 +62,30 @@
           <div class="result"><span class="dot"></span>
             <div><b id="resultTitle">¿Qué deja listo?</b><br><span id="resultText"></span></div>
           </div>
+
+          <!-- Video demostrativo del paso -->
+          <div class="video-section" id="videoSection" style="display:none">
+            <div class="video-card" id="videoCard">
+              <div class="video-bar">
+                <span class="video-bar-title">📹 Video de ejemplo</span>
+                <button type="button" class="video-btn-expand" id="videoExpandBtn" title="Ampliar video">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>Ampliar</span>
+                </button>
+              </div>
+              <div class="video-media-wrap" id="videoMediaWrap" title="Clic para ampliar video">
+                <video id="stepVideo" playsinline preload="metadata">
+                  <source src="" type="video/mp4" id="videoSource">
+                  Tu navegador no soporta video.
+                </video>
+                <div class="video-compact-overlay" id="videoCompactOverlay">
+                  <div class="video-play-badge">▶</div>
+                  <div class="video-click-prompt">⤢ Clic para ampliar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="choices" id="choices"></div>
         </div>
       </section>
@@ -93,6 +117,7 @@
           "Da clic en el botón <b>Confirmar</b>."
         ],
         result: "El pedido queda registrado y, si requiere abastecimiento, se gestiona la compra.",
+        video: "video/pt1.mp4",
         tag: "",
         node: 0
       },
@@ -109,6 +134,7 @@
         ],
         systemNote: "En caso de que algún artículo no cuente con proveedor, notificar vía grupo de soporte para asignar proveedor y poder continuar.",
         result: "La compra pasa a revisión antes de confirmarse.",
+        video: "video/pt2.mp4",
         tag: "",
         node: 1
       },
@@ -120,9 +146,10 @@
         explain: "Comprueba la solicitud. Si necesita cambios, la devuelve al comprador para corregirla; si está bien, la autoriza.",
         systemNote: "Para este paso solicitar vía grupo de soporte la autorización de órdenes de compra para poder continuar.",
         result: "La orden queda autorizada o vuelve para ajustes.",
+        video: "video/pt3.mp4",
         tag: "",
         node: 1,
-        choices: ["Autorizar", "Pedir correcciones"]
+        choices: []
       },
       {
         role: "Compras",
@@ -137,6 +164,7 @@
           "Da clic en el botón <b>Confirmar</b> para que quede confirmada."
         ],
         result: "El almacén sabe qué mercancía espera y cuándo.",
+        video: "video/pt4.mp4",
         tag: "",
         node: 1
       },
@@ -156,6 +184,7 @@
           "<b>Si aparece ventana de error pidiendo Número de Lote/Serie:</b><ul class=\"system-sublist\"><li>Cierra el aviso de error.</li><li>En la fila del producto que solicitó serie, da clic en el enlace <b>Detalles</b>.</li><li>En la ventana <i>Operaciones detalladas</i>, escribe el número de serie en la primera celda (ej. <code>SERIE-12345</code>) y da clic en <b>Guardar</b>.</li><li>Vuelve a dar clic en <b>Validar</b>.</li></ul>"
         ],
         result: "Los productos recibidos ya pueden utilizarse para surtir pedidos.",
+        video: "video/pt5.mp4",
         tag: "",
         node: 2
       },
@@ -174,6 +203,7 @@
           "Da clic en el botón <b>Validar recolección</b>."
         ],
         result: "El pedido queda listo para que Logística lo recoja.",
+        video: "video/pt6.mp4",
         tag: "",
         node: 2
       },
@@ -193,6 +223,7 @@
           "<b>Guardar y procesar:</b> Da clic en <b>Guardar</b> ➔ luego en <b>Confirmar</b> ➔ luego en <b>Validar</b>."
         ],
         result: "Cada pedido queda asignado a una ruta de reparto.",
+        video: "video/pt7.mp4",
         tag: "",
         node: 3
       },
@@ -209,6 +240,7 @@
           "<b>Iniciar:</b> Da clic en el botón <b>Iniciar ruta</b>."
         ],
         result: "La ruta queda iniciada y el chofer puede comenzar las entregas.",
+        video: "video/pt8.mp4",
         tag: "",
         node: 3
       },
@@ -226,6 +258,7 @@
           "<b>Firma de recibido:</b><ul class=\"system-sublist\"><li>En el apartado <b>Firma de recibido</b>, traza la firma dentro del espacio de firma y presiona el botón <b>Firmar</b>.</li><li>Regresa al panel principal de <b>Mis Asignaciones</b>.</li></ul>"
         ],
         result: "Queda constancia de la entrega o de la incidencia.",
+        video: "video/pt9.mp4",
         tag: "",
         node: 3,
         choices: ["Entrega realizada", "No se pudo entregar"]
@@ -243,6 +276,7 @@
           "En la pantalla de confirmación, da clic en <b>Sí, terminé la ruta</b>."
         ],
         result: "La ruta queda marcada como regreso y Ventas retoma el seguimiento del pedido.",
+        video: "video/pt10.mp4",
         tag: "",
         node: 3
       },
@@ -260,6 +294,7 @@
           "Dentro del formulario, da clic en el botón <b>Validar</b>."
         ],
         result: "La entrega queda validada en sistema, la unidad libre para nuevas entregas y las ubicaciones del chofer libres.",
+        video: "video/pt11.mp4",
         tag: "",
         node: 4
       },
@@ -330,6 +365,23 @@
         }
       } else {
         sysBox.style.display = 'none';
+      }
+
+      // Video del paso
+      const videoSec = document.getElementById('videoSection');
+      const stepVid = document.getElementById('stepVideo');
+      const vidSrc = document.getElementById('videoSource');
+      if (s.video) {
+        closeExpandedVideo();
+        videoSec.style.display = 'block';
+        if (vidSrc.getAttribute('src') !== s.video) {
+          vidSrc.setAttribute('src', s.video);
+          stepVid.load();
+        }
+      } else {
+        closeExpandedVideo();
+        videoSec.style.display = 'none';
+        stepVid.pause();
       }
       const lastStep = steps.length - 1;
       const isLastStepSales = steps[lastStep].role === 'Ventas';
@@ -412,6 +464,58 @@
       if (item.kind === 'area') {b.innerHTML = '<b>' + item.label + '</b>';} else {b.innerHTML = '<span>' + item.label + '</span>'; b.title = item.label;}
       b.addEventListener('click', () => {if (item.endStep !== undefined) {current = (current >= Math.floor(steps.length / 2) ? item.endStep : item.step)} else {current = item.step} renderStep()}); grid.appendChild(b)
     });
+    function expandVideo() {
+      const modal = document.getElementById('videoModal');
+      const modalPlayer = document.getElementById('videoModalPlayer');
+      const vid = document.getElementById('stepVideo');
+      const s = steps[current];
+      if (!modal || !modalPlayer || !vid) return;
+
+      const titleEl = document.getElementById('videoModalTitle');
+      if (titleEl && s) {
+        titleEl.textContent = `📹 ${s.heading} (${s.role})`;
+      }
+
+      modalPlayer.appendChild(vid);
+      vid.controls = true;
+      modal.classList.add('active');
+      vid.play().catch(() => {});
+    }
+
+    function closeExpandedVideo() {
+      const modal = document.getElementById('videoModal');
+      const compactWrap = document.getElementById('videoMediaWrap');
+      const vid = document.getElementById('stepVideo');
+      const overlay = document.getElementById('videoCompactOverlay');
+      if (!modal || !compactWrap || !vid) return;
+
+      if (modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        vid.pause();
+        vid.controls = false;
+        if (overlay) {
+          compactWrap.insertBefore(vid, overlay);
+        } else {
+          compactWrap.appendChild(vid);
+        }
+      }
+    }
+
+    const videoMediaWrapEl = document.getElementById('videoMediaWrap');
+    if (videoMediaWrapEl) {
+      videoMediaWrapEl.addEventListener('click', () => {
+        expandVideo();
+      });
+    }
+
+    const videoExpandBtnEl = document.getElementById('videoExpandBtn');
+    if (videoExpandBtnEl) {
+      videoExpandBtnEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        expandVideo();
+      });
+    }
+
     function renderOverview() {
       const mg = document.getElementById('mapGrid');
       if (mg) {
@@ -419,8 +523,32 @@
       }
     }
     renderOverview();
-    document.addEventListener('keydown', e => {if (e.key === 'ArrowRight' && document.getElementById('story').classList.contains('show')) nextStep(); if (e.key === 'ArrowLeft' && document.getElementById('story').classList.contains('show')) previousStep()});
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeExpandedVideo();
+        return;
+      }
+      const modal = document.getElementById('videoModal');
+      if (modal && modal.classList.contains('active')) {
+        return;
+      }
+      if (e.key === 'ArrowRight' && document.getElementById('story').classList.contains('show')) nextStep();
+      if (e.key === 'ArrowLeft' && document.getElementById('story').classList.contains('show')) previousStep();
+    });
   </script>
+  <!-- Modal de Video Expandido (Nivel Root en body para evitar problemas de stacking context) -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" onclick="closeExpandedVideo()"></div>
+    <div class="video-modal-dialog">
+      <div class="video-modal-bar">
+        <span class="video-modal-title" id="videoModalTitle">📹 Video explicativo</span>
+        <button type="button" class="video-modal-close" onclick="closeExpandedVideo()" title="Cerrar vista ampliada (Esc)">
+          ✕ Cerrar
+        </button>
+      </div>
+      <div class="video-modal-player" id="videoModalPlayer"></div>
+    </div>
+  </div>
 </body>
 
 </html>
