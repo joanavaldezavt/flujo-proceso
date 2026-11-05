@@ -291,6 +291,9 @@ button {
 }
 
 .cycle-node.area b {
+    display: block;
+    width: 100%;
+    text-align: center;
     font-size: 10px;
     line-height: 1.15;
     text-transform: uppercase;
@@ -1118,7 +1121,9 @@ footer {
     html,
     body {
         height: auto;
+        min-height: 100%;
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .app {
@@ -1127,110 +1132,372 @@ footer {
         overflow: visible;
     }
 
+    main {
+        width: 100%;
+        padding: 8px 12px 14px;
+        height: auto;
+        justify-content: flex-start;
+    }
+
     .story-view.show {
         grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .path-panel {
-        padding: 10px;
+        padding: 18px 8px;
         min-height: 0;
+        width: 100%;
+        overflow: visible;
+        box-sizing: border-box;
     }
 
     .path.process-grid {
-        width: min(100%, 620px);
+        width: clamp(240px, 46vw, 320px);
+        margin: 10px auto;
     }
 
     .cycle-node.area {
-        width: 72px;
-        height: 72px;
+        width: 66px;
+        height: 66px;
+        padding: 0 3px;
     }
 
     .cycle-node.area b {
-        font-size: 9px;
+        font-size: 6.8px;
+        letter-spacing: -0.015em;
     }
 
     .cycle-node.sub span {
-        width: 84px;
-        max-width: 84px;
-        font-size: 9px;
+        width: 72px;
+        max-width: 72px;
+        font-size: 8px;
     }
 
     .actor-card {
-        padding: 10px;
+        padding: 12px 14px;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .nav {
+        position: sticky;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(8px);
+        padding: 8px 12px;
+        margin-top: 10px;
+        border-top: 1px solid #e2e8f0;
+        z-index: 100;
+        box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.05);
     }
 }
 
-@media(max-width: 560px) {
+@media(max-width: 600px) {
     .top {
-        padding: 14px 16px;
-    }
-
-    .brand {
-        font-size: 10px;
-    }
-
-    .path-panel {
-        padding: 8px;
-    }
-
-    .path.process-grid {
-        width: 100%;
-        aspect-ratio: 1/1;
-    }
-
-    .cycle-node.area {
-        width: 54px;
-        height: 54px;
-        padding: 3px;
-    }
-
-    .cycle-node.area b {
-        font-size: 7.5px;
-    }
-
-    .cycle-node.sub {
-        width: 12px;
-        height: 12px;
-    }
-
-    .cycle-node.sub span {
-        width: 64px;
-        max-width: 64px;
-        font-size: 7.5px;
-        padding: 2px 4px;
-        font-weight: 500 !important;
-    }
-
-    .cycle-node.sub.label-left span {
-        right: 16px;
-    }
-
-    .cycle-node.sub.label-right span {
-        left: 16px;
-    }
-
-    .cycle-node.sub.label-top span {
-        bottom: 16px;
-    }
-
-    .cycle-node.sub.label-bottom span {
-        top: 16px;
-    }
-
-    .actor-card {
-        padding: 10px;
-    }
-
-    .actor-card h2 {
-        font-size: 24px;
-    }
-
-    .actor-card .explain {
-        font-size: 14px;
+        padding: 8px 12px;
     }
 
     .counter {
         font-size: 10px;
+    }
+
+    .path-panel {
+        padding: 20px 8px;
+        border-radius: 18px;
+        overflow: visible;
+    }
+
+    .path.process-grid {
+        width: clamp(195px, 56vw, 235px);
+        aspect-ratio: 1/1;
+        margin: 12px auto;
+    }
+
+    .cycle-node.area {
+        width: 48px;
+        height: 48px;
+        padding: 0 2px;
+    }
+
+    .cycle-node.area b {
+        font-size: 4.4px;
+        line-height: 1.05;
+        letter-spacing: -0.025em;
+    }
+
+    .cycle-node.area.current {
+        transform: translate(-50%, -50%) scale(1.08) !important;
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--node-color) 25%, transparent), 0 4px 12px color-mix(in srgb, var(--node-color) 40%, transparent) !important;
+    }
+
+    .cycle-node.area.current b {
+        font-size: 4.5px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+    }
+
+    .cycle-node.sub {
+        width: 10px;
+        height: 10px;
+    }
+
+    .cycle-node.sub span {
+        width: 48px;
+        max-width: 48px;
+        font-size: 5.4px;
+        padding: 1px 2.5px;
+        line-height: 1.15;
+    }
+
+    .cycle-node.sub.label-left span {
+        right: 11px;
+    }
+
+    .cycle-node.sub.label-right span {
+        left: 11px;
+    }
+
+    .cycle-node.sub.label-top span {
+        bottom: 11px;
+    }
+
+    .cycle-node.sub.label-bottom span {
+        top: 11px;
+    }
+
+    .cycle-node.sub.label-right span:before,
+    .cycle-node.sub.label-left span:before {
+        width: 8px;
+    }
+
+    .cycle-node.sub.label-top span:before,
+    .cycle-node.sub.label-bottom span:before {
+        height: 6px;
+    }
+
+    /* Solución al nodo activo gigante en móvil */
+    .cycle-node.sub.current {
+        transform: translate(-50%, -50%) scale(1.15) !important;
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--node-color) 35%, transparent), 0 0 8px color-mix(in srgb, var(--node-color) 60%, transparent) !important;
+        animation: activeNodePulseMobile 1.5s ease-in-out infinite !important;
+    }
+
+    .cycle-node.sub.current span {
+        font-size: 5.6px !important;
+        font-weight: 700 !important;
+        width: 50px !important;
+        max-width: 50px !important;
+        padding: 1.5px 3.5px !important;
+        box-shadow: 0 0 0 1.5px #ffffff, 0 2px 6px color-mix(in srgb, var(--node-color) 35%, transparent) !important;
+    }
+
+    .actor-card {
+        padding: 11px 12px;
+        border-radius: 14px;
+    }
+
+    .step-label {
+        font-size: 8px;
+        margin-bottom: 5px;
+    }
+
+    .actor-card h2 {
+        font-size: 13px;
+        line-height: 1.3;
+        margin: 0 0 5px;
+    }
+
+    .actor-card .explain {
+        font-size: 10.5px;
+        line-height: 1.45;
+    }
+
+    .person {
+        gap: 7px;
+        margin-bottom: 6px;
+    }
+
+    .person .role {
+        font-size: 7.5px;
+        padding: 1.5px 5px;
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+        font-size: 15px;
+        border-radius: 9px;
+    }
+
+    .person .name {
+        font-size: 11.5px;
+    }
+
+    .system-box {
+        margin-top: 7px;
+        padding: 7px 9px;
+        gap: 5px;
+    }
+
+    .system-badge {
+        font-size: 8px;
+    }
+
+    .route-tag {
+        font-size: 8.5px;
+        padding: 1.5px 4.5px;
+    }
+
+    .route-arrow {
+        font-size: 8px;
+    }
+
+    .system-actions-title {
+        font-size: 9.5px;
+        margin-bottom: 4px;
+    }
+
+    .system-actions-list li {
+        font-size: 9.5px;
+        line-height: 1.35;
+    }
+
+    .system-note {
+        font-size: 9px;
+        padding: 4px 7px;
+    }
+
+    .result {
+        margin-top: 7px;
+        padding: 6px 8px;
+        font-size: 9.5px;
+    }
+
+    .video-bar {
+        padding: 5px 8px;
+    }
+
+    .video-bar-title {
+        font-size: 9.5px;
+    }
+
+    .video-btn-expand {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+
+    .video-click-prompt {
+        font-size: 8.5px;
+        padding: 2px 6px;
+    }
+
+    .video-media-wrap video {
+        max-height: 130px;
+    }
+
+    .video-modal {
+        padding: 8px;
+    }
+
+    .video-modal-dialog {
+        width: 100%;
+        max-height: 96vh;
+        border-radius: 12px;
+    }
+
+    .video-modal-bar {
+        padding: 8px 12px;
+    }
+
+    .video-modal-title {
+        font-size: 11px;
+    }
+
+    .video-modal-close {
+        padding: 4px 10px;
+        font-size: 10.5px;
+    }
+
+    .video-modal-player video {
+        max-height: 75vh;
+    }
+
+    .nav .btn {
+        padding: 6px 11px;
+        font-size: 10.5px;
+    }
+}
+
+@media(max-width: 380px) {
+    .path-panel {
+        padding: 14px 4px;
+    }
+
+    .path.process-grid {
+        width: clamp(165px, 48vw, 195px);
+        margin: 10px auto;
+    }
+
+    .cycle-node.area {
+        width: 40px;
+        height: 40px;
+        padding: 0 2px;
+    }
+
+    .cycle-node.area b {
+        font-size: 3.8px;
+        letter-spacing: -0.03em;
+    }
+
+    .cycle-node.area.current b {
+        font-size: 3.9px;
+        letter-spacing: -0.035em;
+    }
+
+    .cycle-node.sub {
+        width: 9px;
+        height: 9px;
+    }
+
+    .cycle-node.sub span {
+        width: 40px;
+        max-width: 40px;
+        font-size: 4.8px;
+        padding: 1px 2px;
+    }
+
+    .cycle-node.sub.label-right span {
+        left: 9px;
+    }
+
+    .cycle-node.sub.label-left span {
+        right: 9px;
+    }
+
+    .cycle-node.sub.current span {
+        width: 42px !important;
+        max-width: 42px !important;
+        font-size: 5px !important;
+    }
+
+    .actor-card h2 {
+        font-size: 12px;
+    }
+
+    .actor-card .explain {
+        font-size: 9.5px;
+    }
+}
+
+@keyframes activeNodePulseMobile {
+    0%,
+    100% {
+        box-shadow: 0 0 0 2.5px color-mix(in srgb, var(--node-color) 30%, transparent), 0 0 6px color-mix(in srgb, var(--node-color) 60%, transparent);
+    }
+    50% {
+        box-shadow: 0 0 0 4.5px color-mix(in srgb, var(--node-color) 16%, transparent), 0 0 10px color-mix(in srgb, var(--node-color) 80%, transparent);
     }
 }
 
