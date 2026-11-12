@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presentación — Manual de Choferes PWA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- Barra Superior -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="top-back-link" title="Volver al Menú Principal de Manuales">
+        <i class="mdi mdi-arrow-left"></i>
+        <span>Menú de Manuales</span>
+      </a>
+
+      <div class="deck-meta">
+        <span class="deck-title"><i class="mdi mdi-truck-delivery"></i> App Choferes</span>
+        <span class="slide-counter-badge" id="slideCounterBadge">
+          <i class="mdi mdi-presentation"></i> Diapositiva 1 de 4
+        </span>
+      </div>
+    </div>
+    <div class="deck-progress-line">
+      <div class="deck-progress-bar" id="deckProgressBar"></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="slide-viewport">
+
+      <!-- ==============================================
+           DIAPOSITIVA 1: INSTALACIÓN PWA (ANDROID / IOS)
+           ============================================== -->
+      <section class="slide-card active" id="slide-0" data-index="0">
+        <div class="slide-header">
+          <div class="slide-badge-wrap">
+            <span class="slide-topic-badge"><i class="mdi mdi-download"></i> Fase 01</span>
+            <h2>1. Instalación de la Aplicación en tu Celular</h2>
+          </div>
+          <span class="slide-step-indicator">1 / 5</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="slide-content-col">
+            <p class="slide-lead">
+              La app de Choferes se instala directamente desde la web.
+            </p>
+
+            <!-- Selector Interactivo de Sistema Operativo -->
+            <div class="os-selector-box">
+              <div class="os-selector-title">
+                <i class="mdi mdi-cellphone-cog"></i> Selecciona el sistema de tu teléfono:
+              </div>
+              <div class="os-toggle-buttons">
+                <button type="button" class="os-btn active android" id="btnOsAndroid" onclick="selectOs('android')">
+                  <i class="mdi mdi-android" style="font-size: 20px;"></i> En Android (Chrome)
+                </button>
+                <button type="button" class="os-btn ios" id="btnOsIos" onclick="selectOs('ios')">
+                  <i class="mdi mdi-apple" style="font-size: 20px;"></i> En iPhone (Safari)
+                </button>
+              </div>
+
+              <!-- Pasos Android -->
+              <div class="os-tab-content active" id="osTabAndroid">
+                <div class="ppt-steps">
+                  <div class="ppt-step-row green">
+                    <span class="ppt-step-num">1</span>
+                    <div class="ppt-step-desc">Abre <b>Google Chrome</b> e ingresa al portal
+                      (<code>/my/asignaciones</code>) con tu usuario y contraseña.</div>
+                  </div>
+                  <div class="ppt-step-row green">
+                    <span class="ppt-step-num">2</span>
+                    <div class="ppt-step-desc">Toca tu <b>avatar (iniciales)</b> arriba a la derecha y selecciona
+                      <b>«Instalar aplicación»</b>.
+                    </div>
+                  </div>
+                  <div class="ppt-step-row green">
+                    <span class="ppt-step-num">3</span>
+                    <div class="ppt-step-desc"><i>Alternativa:</i> Si no sale el aviso, toca los 3 puntos (<b>⋮</b>) de
+                      Chrome y elige <b>«Instalar aplicación»</b> o <b>«Agregar a pantalla principal»</b>.</div>
+                  </div>
+                  <div class="ppt-step-row green">
+                    <span class="ppt-step-num">4</span>
+                    <div class="ppt-step-desc">Confirma tocando <b>Instalar</b>. ¡Listo! El ícono quedará en tu pantalla
+                      de inicio.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pasos iPhone / Safari -->
+              <div class="os-tab-content" id="osTabIos">
+                <div class="ppt-steps">
+                  <div class="ppt-step-row blue">
+                    <span class="ppt-step-num">1</span>
+                    <div class="ppt-step-desc">Abre <b>Safari</b> e ingresa al portal (<code>/my/asignaciones</code>)
+                      con tu usuario y contraseña.</div>
+                  </div>
+                  <div class="ppt-step-row blue">
+                    <span class="ppt-step-num">2</span>
+                    <div class="ppt-step-desc">Toca el botón <b>Compartir</b> (<i class="mdi mdi-export-variant"></i> el
+                      recuadro con flecha arriba en la barra inferior de Safari).</div>
+                  </div>
+                  <div class="ppt-step-row blue">
+                    <span class="ppt-step-num">3</span>
+                    <div class="ppt-step-desc">Desliza hacia abajo en el menú y toca <b>«Agregar a pantalla de
+                        inicio»</b> (<i class="mdi mdi-plus-box-outline"></i>).</div>
+                  </div>
+                  <div class="ppt-step-row blue">
+                    <span class="ppt-step-num">4</span>
+                    <div class="ppt-step-desc">Toca <b>Agregar</b> arriba a la derecha. El ícono quedará instalado en tu
+                      pantalla de inicio.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ppt-callout info">
+              <i class="mdi mdi-shield-check"></i>
+              <div><b>Acceso directo:</b> Una vez instalada, ya no necesitas escribir la página; entras tocando el ícono
+                en tu celular.</div>
+            </div>
+          </div>
+
+          <!-- Columna Video Demostrativo -->
+          <div class="slide-video-col">
+            <div class="slide-video-topbar">
+              <span id="videoTitleSlide0"><i class="mdi mdi-android"></i> Video: Instalación en Android</span>
+              <button type="button" class="btn-expand-video" id="btnExpandSlide0" onclick="clickSlide0Video()">
+                <i class="mdi mdi-arrow-expand-all"></i> Ampliar
+              </button>
+            </div>
+            <div class="slide-video-player-wrap" onclick="clickSlide0Video()">
+              <video src="video/instalacion_pwa_android.mp4" playsinline preload="auto" id="video-slide-0" muted loop
+                autoplay>
+                Tu navegador no soporta video.
+              </video>
+              <div class="slide-video-placeholder" id="placeholder-slide-0" style="display:none">
+                <i class="mdi mdi-video-box"></i>
+                <p>Demostración de instalación</p>
+                <span class="hint">Clic para ampliar demostración</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           DIAPOSITIVA 2: 1. CARGA OBLIGATORIA
+           ============================================== -->
+      <section class="slide-card" id="slide-1" data-index="1">
+        <div class="slide-header">
+          <div class="slide-badge-wrap">
+            <span class="slide-topic-badge" style="background:#fffbeb; color:#b45309; border-color:#fde68a;">
+              <i class="mdi mdi-alert-circle"></i> Fase 02
+            </span>
+            <h2>2. Carga obligatoria antes de salir a ruta</h2>
+          </div>
+          <span class="slide-step-indicator">2 / 5</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="slide-content-col">
+            <p class="slide-lead">
+              La aplicación está diseñada para funcionar <b>con o sin conexión a internet</b>, por lo que podrás
+              continuar realizando tus actividades incluso cuando no tengas acceso a la red.
+            </p>
+
+            <div class="ppt-callout warning">
+              <i class="mdi mdi-alert-decagram"></i>
+              <div>
+                <span class="status-badge-demo"
+                  style="background:#fef3c7; color:#92400e; border-color:#fde68a; margin-bottom:6px;">
+                  Paso obligatorio
+                </span><br>
+                <b style="font-size:13.5px;">¡Cada mañana, antes de salir del almacén, debes abrir la aplicación
+                  mientras tengas conexión a internet (Wi-Fi o datos móviles) e iniciar sesión!</b>
+              </div>
+            </div>
+
+            <div class="nav-state-card warning">
+              <div class="nav-state-card-header">
+                <h4><i class="mdi mdi-help-circle-outline"></i> ¿Por qué es obligatorio este paso matutino?</h4>
+              </div>
+              <div>
+                Al ingresar a la aplicación con conexión a internet, el celular descargará automáticamente en su memoria
+                interna la información necesaria para que puedas realizar tus actividades durante la ruta, incluso si
+                pierdes la conexión posteriormente.
+              </div>
+              <div class="ppt-steps" style="margin-top:4px;">
+                <div class="ppt-step-row">
+                  <span class="ppt-step-num" style="background:#ea580c;"><i class="mdi mdi-truck"></i></span>
+                  <div class="ppt-step-desc"><b>Ruta activa y unidad:</b> Asignación de vehículo y paradas del día.
+                  </div>
+                </div>
+                <div class="ppt-step-row">
+                  <span class="ppt-step-num" style="background:#ea580c;"><i
+                      class="mdi mdi-map-marker-multiple"></i></span>
+                  <div class="ppt-step-desc"><b>Todas tus entregas:</b> Clientes, direcciones y lista de productos a
+                    entregar.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-important-note">
+              <i class="mdi mdi-information-outline"></i>
+              <div><b>Importante:</b> Realiza este paso antes de salir del almacén para asegurarte de contar con la
+                información necesaria para trabajar sin conexión.</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================
+           DIAPOSITIVA 3: 3. CON CONEXIÓN A INTERNET
+           ============================================== -->
+      <section class="slide-card" id="slide-2" data-index="2">
+        <div class="slide-header">
+          <div class="slide-badge-wrap">
+            <span class="slide-topic-badge" style="background:#ecfdf5; color:#059669; border-color:#a7f3d0;">
+              <i class="mdi mdi-wifi-check"></i> Fase 03
+            </span>
+            <h2>3. Cuando tienes conexión a internet</h2>
+          </div>
+          <span class="slide-step-indicator">3 / 5</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="slide-content-col">
+            <p class="slide-lead">
+              Cuando tu celular cuente con conexión a internet, verás en la parte superior derecha de la aplicación un
+              indicador verde con el estado:
+              <span class="status-badge-demo online"><i class="mdi mdi-circle" style="font-size:8px;"></i> En
+                línea</span>
+            </p>
+
+            <div class="nav-state-card online">
+              <div class="nav-state-card-header">
+                <h4><i class="mdi mdi-cloud-check-outline"></i> Sincronización inmediata con el sistema</h4>
+              </div>
+              <div>
+                Esto significa que todas las acciones que realices dentro de la aplicación, como la carga de evidencias,
+                el registro de firmas y la finalización de rutas, <b>se sincronizarán automáticamente e inmediatamente
+                  con el sistema</b>.
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="slide-video-col">
+            <div class="slide-video-topbar">
+              <span><i class="mdi mdi-video-outline"></i> Video: Modo En Línea</span>
+              <button type="button" class="btn-expand-video"
+                onclick="expandVideo('video/navegacion_en_linea.mp4', '3. Cuando tienes conexión a internet')">
+                <i class="mdi mdi-arrow-expand-all"></i> Ampliar
+              </button>
+            </div>
+            <div class="slide-video-player-wrap"
+              onclick="expandVideo('video/navegacion_en_linea.mp4', '3. Cuando tienes conexión a internet')">
+              <video src="video/navegacion_en_linea.mp4" playsinline preload="auto" id="video-slide-2" muted loop autoplay>
+                Tu navegador no soporta video.
+              </video>
+              <div class="slide-video-placeholder" id="placeholder-slide-2" style="display:none">
+                <i class="mdi mdi-video-box"></i>
+                <p>Modo En Línea</p>
+                <span class="hint">Clic para ampliar demostración</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           DIAPOSITIVA 4: CUANDO NO TIENES CONEXIÓN
+           ============================================== -->
+      <section class="slide-card" id="slide-3" data-index="3">
+        <div class="slide-header">
+          <div class="slide-badge-wrap">
+            <span class="slide-topic-badge" style="background:#fefce8; color:#ca8a04; border-color:#fef08a;">
+              <i class="mdi mdi-airplane" style="transform: rotate(-45deg);"></i> Fase 04
+            </span>
+            <h2>4. Cuando no tienes conexión a internet</h2>
+          </div>
+          <span class="slide-step-indicator">4 / 5</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="slide-content-col">
+            <p class="slide-lead">
+              Si tu celular pierde la conexión a internet, el indicador cambiará a color amarillo y mostrará un icono de
+              avión junto con el estado:
+              <span class="status-badge-demo offline"><i class="mdi mdi-airplane"
+                  style="transform: rotate(-45deg); font-size:11px;"></i> Sin conexión</span>
+            </p>
+
+            <div class="ppt-callout warning">
+              <i class="mdi mdi-cellphone-check"></i>
+              <div>
+                <b>¡Podrás seguir navegando y utilizando la aplicación con normalidad!</b><br>
+                La diferencia es que la información que registres, como fotografías, firmas y término de la ruta, <b>se
+                  almacenará temporalmente en tu dispositivo</b>.
+              </div>
+            </div>
+
+            <div class="nav-state-card offline">
+              <div class="nav-state-card-header">
+                <h4><i class="mdi mdi-clock-outline"></i> Indicador de Pendientes</h4>
+                <span class="status-badge-demo pending"><i class="mdi mdi-clock-outline"></i> Pendientes</span>
+              </div>
+              <div>
+                En el encabezado de la aplicación aparecerá un indicador de <b>«Pendientes»</b>, que mostrará la
+                cantidad de registros que se han generado mientras trabajabas sin conexión y que aún no se han
+                sincronizado.
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="slide-video-col">
+            <div class="slide-video-topbar">
+              <span><i class="mdi mdi-video-outline"></i> Video: Sin Conexión</span>
+              <button type="button" class="btn-expand-video"
+                onclick="expandVideo('video/navegacion_offline.mp4', '4. Cuando no tienes conexión a internet')">
+                <i class="mdi mdi-arrow-expand-all"></i> Ampliar
+              </button>
+            </div>
+            <div class="slide-video-player-wrap"
+              onclick="expandVideo('video/navegacion_offline.mp4', '4. Cuando no tienes conexión a internet')">
+              <video src="video/navegacion_offline.mp4" playsinline preload="auto" id="video-slide-3" muted loop autoplay>
+                Tu navegador no soporta video.
+              </video>
+              <div class="slide-video-placeholder" id="placeholder-slide-3" style="display:none">
+                <i class="mdi mdi-video-box"></i>
+                <p>Modo Sin Conexión (Offline)</p>
+                <span class="hint">Clic para ampliar demostración</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           DIAPOSITIVA 5: SINCRONIZACIÓN DE INFORMACIÓN
+           ============================================== -->
+      <section class="slide-card" id="slide-4" data-index="4">
+        <div class="slide-header">
+          <div class="slide-badge-wrap">
+            <span class="slide-topic-badge" style="background:#eff6ff; color:#2563eb; border-color:#bfdbfe;">
+              <i class="mdi mdi-sync"></i> Fase 05
+            </span>
+            <h2>5. Sincronización de información</h2>
+          </div>
+          <span class="slide-step-indicator">5 / 5</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="slide-content-col">
+            <p class="slide-lead">
+              Cuando tu celular recupere la conexión a internet, la aplicación detectará automáticamente que hay
+              información pendiente y comenzará el proceso de sincronización.
+            </p>
+
+            <div class="nav-state-card sync">
+              <div class="nav-state-card-header">
+                <h4><i class="mdi mdi-sync mdi-spin"></i> Proceso de sincronización</h4>
+                <span class="status-badge-demo" style="background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe;">
+                  <i class="mdi mdi-sync mdi-spin"></i> Sincronizando
+                </span>
+              </div>
+              <div>
+                Durante este proceso, el indicador cambiará a <b>«Sincronizando»</b>, para que puedas identificar que la
+                información se está enviando al sistema central.
+              </div>
+            </div>
+
+            <div class="nav-state-card">
+              <div class="nav-state-card-header">
+                <h4><i class="mdi mdi-check-all"></i> Una vez finalizada la sincronización:</h4>
+              </div>
+              <ul class="sync-check-list">
+                <li><i class="mdi mdi-check-circle"></i> El contador de registros pendientes desaparecerá.</li>
+                <li><i class="mdi mdi-check-circle"></i> La aplicación mostrará un mensaje de confirmación indicando que
+                  la información se sincronizó correctamente.</li>
+              </ul>
+            </div>
+
+            <div class="card-important-note success">
+              <i class="mdi mdi-check-decagram"></i>
+              <div><b>Importante:</b> La sincronización no se realiza en segundo plano.<br> Cuando tu celular recupere la
+                conexión a internet, deberás abrir la aplicación para que se inicie automáticamente el proceso de
+                sincronización. Mantén la aplicación abierta hasta que finalice y aparezca el mensaje de confirmación.
+              </div>
+            </div>
+
+            <!--  <div class="ppt-callout info">
+              <i class="mdi mdi-gesture-swipe-down"></i>
+              <div><b>Actualización manual opcional:</b> Si deseas forzar la sincronización, desliza la pantalla hacia abajo (*pull to refresh*) para ver el círculo de carga.</div>
+            </div>-->
+          </div>
+
+          <div class="slide-video-col">
+            <div class="slide-video-topbar">
+              <span><i class="mdi mdi-video-outline"></i> Video: Sincronización</span>
+              <button type="button" class="btn-expand-video"
+                onclick="expandVideo('video/sincronizacion.mp4', '5. Sincronización de información')">
+                <i class="mdi mdi-arrow-expand-all"></i> Ampliar
+              </button>
+            </div>
+            <div class="slide-video-player-wrap"
+              onclick="expandVideo('video/sincronizacion.mp4', '5. Sincronización de información')">
+              <video src="video/sincronizacion.mp4" playsinline preload="auto" id="video-slide-4" muted loop autoplay>
+                Tu navegador no soporta video.
+              </video>
+              <div class="slide-video-placeholder" id="placeholder-slide-4" style="display:none">
+                <i class="mdi mdi-video-box"></i>
+                <p>Sincronización de información</p>
+                <span class="hint">Clic para ampliar demostración</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Barra de Navegación de la Presentación (Estilo Diapositivas) -->
+    <div class="deck-navigation-bar">
+      <button type="button" class="deck-nav-btn" id="btnPrevSlide" onclick="prevSlide()" disabled>
+        <i class="mdi mdi-chevron-left"></i> Anterior
+      </button>
+
+      <!-- Indicadores de bolitas (Dots) -->
+      <div class="deck-dots" id="deckDotsContainer">
+        <button type="button" class="deck-dot active" onclick="goToSlide(0)" title="1. Instalación"></button>
+        <button type="button" class="deck-dot" onclick="goToSlide(1)" title="2. Carga Obligatoria"></button>
+        <button type="button" class="deck-dot" onclick="goToSlide(2)" title="3. En Línea"></button>
+        <button type="button" class="deck-dot" onclick="goToSlide(3)" title="4. Sin Conexión"></button>
+        <button type="button" class="deck-dot" onclick="goToSlide(4)" title="5. Sincronización"></button>
+      </div>
+
+      <button type="button" class="deck-nav-btn primary" id="btnNextSlide" onclick="nextSlide()">
+        Siguiente <i class="mdi mdi-chevron-right"></i>
+      </button>
+    </div>
+  </main>
+
+  <!-- Modal para video ampliado -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" onclick="closeExpandedVideo()"></div>
+    <div class="video-modal-dialog">
+      <div class="video-modal-bar">
+        <span class="video-modal-title" id="videoModalTitle"><i class="mdi mdi-video-box"></i> Video demostrativo</span>
+        <button type="button" class="video-modal-close" onclick="closeExpandedVideo()" title="Cerrar video (Esc)">
+          <i class="mdi mdi-close"></i> Cerrar
+        </button>
+      </div>
+      <div class="video-modal-player" id="videoModalPlayer">
+        <video id="modalVideoPlayer" controls playsinline></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script externo -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>

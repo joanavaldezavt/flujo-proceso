@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flujo de Proceso</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="app">
+    <div class="top">
+      <a href="../index.html" class="top-back-link" title="Volver al menú principal de manuales">
+        <i class="mdi mdi-arrow-left"></i>
+        <span>Menú de Manuales</span>
+      </a>
+      <div class="counter" id="counter">RECORRIDO INTERACTIVO</div>
+    </div>
+    <div class="progress-wrap" aria-label="Progreso de la presentación">
+      <div class="progress-line"><span id="progress"></span></div>
+      <div class="progress-glow" id="progressGlow"></div>
+    </div>
+    <main>
+      <section class="story-view" id="story">
+        <div class="path-panel">
+          <div class="path process-grid" id="processGrid"
+            aria-label="Diagrama circular del proceso por departamentos y subprocesos">
+            <svg class="cycle-svg" viewBox="0 0 700 700" aria-hidden="true">
+              <defs>
+                <marker id="cycleArrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8" />
+                </marker>
+              </defs>
+              <path class="cycle-base" d="M350 70 A280 280 0 1 1 349.9 70" marker-end="url(#cycleArrow)"
+                pathLength="1000" />
+              <path id="cycleDone" class="cycle-glow" d="M350 70 A280 280 0 1 1 349.9 70" pathLength="1000" />
+            </svg>
+          </div>
+
+        </div>
+        <div class="actor-card">
+          <div class="step-label" id="stepLabel">PASO 01 · EL PEDIDO COMIENZA</div>
+          <div class="person">
+            <div class="avatar" id="avatar">🧑‍💼</div>
+            <div>
+              <div class="role" id="role">Ventas</div>
+              <div class="name" id="personName">Asesor de ventas</div>
+            </div>
+          </div>
+          <h2 id="heading">Todo comienza con una solicitud.</h2>
+          <p class="explain" id="explain"></p>
+
+          <div class="system-box" id="systemBox" style="display:none">
+            <div class="system-box-header" id="systemBoxHeader">
+              <span class="system-badge"><i class="mdi mdi-monitor-dashboard"></i> RUTA EN EL SISTEMA</span>
+            </div>
+            <div class="system-route" id="systemRoute"></div>
+            <div class="system-actions" id="systemActions" style="display:none">
+              <div class="system-actions-title" id="systemActionsTitle"><i class="mdi mdi-lightning-bolt"></i> Acciones:</div>
+              <ol class="system-actions-list" id="systemActionsList"></ol>
+            </div>
+            <div class="system-note" id="systemNote" style="display:none"></div>
+          </div>
+
+          <div class="result"><span class="dot"></span>
+            <div><b id="resultTitle">¿Qué deja listo?</b><br><span id="resultText"></span></div>
+          </div>
+
+          <!-- Video demostrativo del paso -->
+          <div class="video-section" id="videoSection" style="display:none">
+            <div class="video-card" id="videoCard">
+              <div class="video-bar">
+                <span class="video-bar-title"><i class="mdi mdi-video-outline"></i> Video de ejemplo</span>
+                <button type="button" class="video-btn-expand" id="videoExpandBtn" title="Ampliar video">
+                  <i class="mdi mdi-arrow-expand-all"></i>
+                  <span>Ampliar</span>
+                </button>
+              </div>
+              <div class="video-media-wrap" id="videoMediaWrap" title="Clic para ampliar video">
+                <video id="stepVideo" playsinline preload="metadata">
+                  <source src="" type="video/mp4" id="videoSource">
+                  Tu navegador no soporta video.
+                </video>
+                <div class="video-compact-overlay" id="videoCompactOverlay">
+                  <div class="video-play-badge"><i class="mdi mdi-play"></i></div>
+                  <div class="video-click-prompt"><i class="mdi mdi-arrow-expand-all"></i> Clic para ampliar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="choices" id="choices"></div>
+        </div>
+      </section>
+
+      <div class="nav" id="nav" style="display:none">
+        <div class="nav-left">
+          <a href="../index.html" class="btn" title="Volver al menú de manuales"><i class="mdi mdi-home-outline"></i> Manuales</a>
+          <button class="btn" id="restartBtn" onclick="restartStory()"><i class="mdi mdi-restart"></i> Reiniciar</button>
+        </div>
+        <div class="nav-right">
+          <button class="btn" onclick="previousStep()"><i class="mdi mdi-chevron-left"></i> Anterior</button>
+          <button class="btn primary" id="nextBtn" onclick="nextStep()">Siguiente <i class="mdi mdi-chevron-right"></i></button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal de Video Expandido (Nivel Root en body para evitar problemas de stacking context) -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" onclick="closeExpandedVideo()"></div>
+    <div class="video-modal-dialog">
+      <div class="video-modal-bar">
+        <span class="video-modal-title" id="videoModalTitle"><i class="mdi mdi-video-box"></i> Video explicativo</span>
+        <button type="button" class="video-modal-close" onclick="closeExpandedVideo()" title="Cerrar vista ampliada (Esc)">
+          <i class="mdi mdi-close"></i> Cerrar
+        </button>
+      </div>
+      <div class="video-modal-player" id="videoModalPlayer"></div>
+    </div>
+  </div>
+
+  <!-- Script externo -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>
