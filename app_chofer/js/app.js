@@ -22,7 +22,7 @@ function selectOs(os) {
     if (btnIos) btnIos.classList.remove('active');
     if (tabAndroid) tabAndroid.classList.add('active');
     if (tabIos) tabIos.classList.remove('active');
-    if (videoTitleEl) videoTitleEl.innerHTML = '<i class="mdi mdi-android"></i> Video: Instalación en Android';
+    if (videoTitleEl) videoTitleEl.innerHTML = '<img src="img/android-logo.png" alt="Android" class="os-title-icon"> Video: Instalación en Android';
     if (videoEl) {
       videoEl.style.display = 'block';
       const placeholder = document.getElementById('placeholder-slide-0');
@@ -33,14 +33,14 @@ function selectOs(os) {
       videoEl.play().catch(() => {});
     }
     if (expandBtn) {
-      expandBtn.setAttribute('onclick', "expandVideo('video/instalacion_pwa_android.mp4', '1. Instalación PWA en Android')");
+      expandBtn.setAttribute('onclick', "expandVideo('video/instalacion_pwa_android.mp4', '1. Instalación en Android')");
     }
   } else {
     if (btnIos) btnIos.classList.add('active');
     if (btnAndroid) btnAndroid.classList.remove('active');
     if (tabIos) tabIos.classList.add('active');
     if (tabAndroid) tabAndroid.classList.remove('active');
-    if (videoTitleEl) videoTitleEl.innerHTML = '<i class="mdi mdi-apple"></i> Video: Instalación en iPhone (iOS)';
+    if (videoTitleEl) videoTitleEl.innerHTML = '<img src="img/apple-logo.png" alt="Apple" class="os-title-icon"> Video: Instalación en iPhone (iOS)';
     if (videoEl) {
       videoEl.style.display = 'block';
       const placeholder = document.getElementById('placeholder-slide-0');
@@ -51,16 +51,16 @@ function selectOs(os) {
       videoEl.play().catch(() => {});
     }
     if (expandBtn) {
-      expandBtn.setAttribute('onclick', "expandVideo('video/instalacion_pwa_ios.mp4', '1. Instalación PWA en iPhone (iOS)')");
+      expandBtn.setAttribute('onclick', "expandVideo('video/instalacion_pwa_ios.mp4', '1. Instalación en iPhone (iOS)')");
     }
   }
 }
 
 function clickSlide0Video() {
   if (currentOs === 'android') {
-    expandVideo('video/instalacion_pwa_android.mp4', '1. Instalación PWA en Android');
+    expandVideo('video/instalacion_pwa_android.mp4', '1. Instalación en Android');
   } else {
-    expandVideo('video/instalacion_pwa_ios.mp4', '1. Instalación PWA en iPhone (iOS)');
+    expandVideo('video/instalacion_pwa_ios.mp4', '1. Instalación en iPhone (iOS)');
   }
 }
 
@@ -146,13 +146,20 @@ function goToSlide(idx) {
   }
 }
 
-// Modal de Video Expandido
+// Modal de Video / Imagen Expandida
 function expandVideo(src, title) {
   const modal = document.getElementById('videoModal');
   const modalVid = document.getElementById('modalVideoPlayer');
+  const modalImg = document.getElementById('modalImagePlayer');
   const titleEl = document.getElementById('videoModalTitle');
 
   if (!modal || !modalVid) return;
+
+  if (modalImg) {
+    modalImg.style.display = 'none';
+    modalImg.removeAttribute('src');
+  }
+  modalVid.style.display = 'block';
 
   if (title && titleEl) {
     titleEl.innerHTML = `<i class="mdi mdi-video-box"></i> ${title}`;
@@ -163,16 +170,51 @@ function expandVideo(src, title) {
   modalVid.play().catch(() => {});
 }
 
+function expandImage(src, title) {
+  const modal = document.getElementById('videoModal');
+  const modalVid = document.getElementById('modalVideoPlayer');
+  const modalImg = document.getElementById('modalImagePlayer');
+  const titleEl = document.getElementById('videoModalTitle');
+
+  if (!modal) return;
+
+  if (modalVid) {
+    modalVid.pause();
+    modalVid.style.display = 'none';
+  }
+
+  if (modalImg) {
+    modalImg.src = src;
+    modalImg.style.display = 'block';
+  }
+
+  if (title && titleEl) {
+    titleEl.innerHTML = `<i class="mdi mdi-image-search-outline"></i> ${title}`;
+  }
+
+  modal.classList.add('active');
+}
+
 function closeExpandedVideo() {
   const modal = document.getElementById('videoModal');
   const modalVid = document.getElementById('modalVideoPlayer');
+  const modalImg = document.getElementById('modalImagePlayer');
 
-  if (!modal || !modalVid) return;
+  if (!modal) return;
 
   modal.classList.remove('active');
-  modalVid.pause();
-  modalVid.removeAttribute('src');
-  modalVid.load();
+
+  if (modalVid) {
+    modalVid.pause();
+    modalVid.removeAttribute('src');
+    modalVid.load();
+    modalVid.style.display = 'block';
+  }
+
+  if (modalImg) {
+    modalImg.style.display = 'none';
+    modalImg.removeAttribute('src');
+  }
 
   // Asegurar que el video de la diapositiva activa siga reproduciéndose
   const activeSlideEl = document.querySelector('.slide-card.active');

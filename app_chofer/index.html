@@ -63,62 +63,125 @@
               </div>
               <div class="os-toggle-buttons">
                 <button type="button" class="os-btn active android" id="btnOsAndroid" onclick="selectOs('android')">
-                  <i class="mdi mdi-android" style="font-size: 20px;"></i> En Android (Chrome)
+                  <img src="img/android-logo.png" alt="Android" class="os-logo-img">
+                  <div class="os-btn-text">
+                    <span class="os-name">Android</span>
+                  </div>
                 </button>
                 <button type="button" class="os-btn ios" id="btnOsIos" onclick="selectOs('ios')">
-                  <i class="mdi mdi-apple" style="font-size: 20px;"></i> En iPhone (Safari)
+                  <img src="img/apple-logo.png" alt="Apple" class="os-logo-img">
+                  <div class="os-btn-text">
+                    <span class="os-name">iOS</span>
+                  </div>
                 </button>
               </div>
 
               <!-- Pasos Android -->
               <div class="os-tab-content active" id="osTabAndroid">
-                <div class="ppt-steps">
-                  <div class="ppt-step-row green">
-                    <span class="ppt-step-num">1</span>
-                    <div class="ppt-step-desc">Abre <b>Google Chrome</b> e ingresa al portal
-                      (<code>/my/asignaciones</code>) con tu usuario y contraseña.</div>
-                  </div>
-                  <div class="ppt-step-row green">
-                    <span class="ppt-step-num">2</span>
-                    <div class="ppt-step-desc">Toca tu <b>avatar (iniciales)</b> arriba a la derecha y selecciona
-                      <b>«Instalar aplicación»</b>.
+                <div class="install-steps-grid grid-3">
+                  <div class="install-step-card android">
+                    <div class="install-step-top">
+                      <span class="install-step-num">1</span>
+                      <span class="install-step-heading">Ingresa al portal</span>
+                    </div>
+                    <div class="install-step-desc">Abre <b>Chrome</b> e inicia sesión en Odoo con tu usuario y
+                      contraseña.</div>
+                    <div class="install-step-frame"
+                      onclick="expandImage('img/mis-asignaciones.png', 'Android - Paso 1: Ingreso a Odoo')"
+                      title="Clic para ampliar imagen">
+                      <img src="img/mis-asignaciones.png" alt="Mis Asignaciones" class="install-frame-img">
                     </div>
                   </div>
-                  <div class="ppt-step-row green">
-                    <span class="ppt-step-num">3</span>
-                    <div class="ppt-step-desc"><i>Alternativa:</i> Si no sale el aviso, toca los 3 puntos (<b>⋮</b>) de
-                      Chrome y elige <b>«Instalar aplicación»</b> o <b>«Agregar a pantalla principal»</b>.</div>
+
+                  <div class="install-step-card android">
+                    <div class="install-step-top">
+                      <span class="install-step-num">2</span>
+                      <span class="install-step-heading">Menú de usuario</span>
+                    </div>
+                    <div class="install-step-desc">Toca tu <b>avatar (iniciales)</b> arriba a la derecha y pulsa
+                      <b>«Instalar aplicación»</b>.</div>
+                    <div class="install-step-frame"
+                      onclick="expandImage('img/avatar.png', 'Android - Paso 2: Menú Instalar aplicación')"
+                      title="Clic para ampliar imagen">
+                      <img src="img/avatar.png" alt="Avatar - Instalar aplicación" class="install-frame-img">
+                    </div>
                   </div>
-                  <div class="ppt-step-row green">
-                    <span class="ppt-step-num">4</span>
-                    <div class="ppt-step-desc">Confirma tocando <b>Instalar</b>. ¡Listo! El ícono quedará en tu pantalla
+
+                  <div class="install-step-card android">
+                    <div class="install-step-top">
+                      <span class="install-step-num">3</span>
+                      <span class="install-step-heading">Confirmación</span>
+                    </div>
+                    <div class="install-step-desc">Confirma tocando <b>«Instalar»</b>. El ícono se creará en tu pantalla
                       de inicio.</div>
+                    <div class="install-step-frame"
+                      onclick="expandImage('img/confirmacion-instalacion.jpeg', 'Android - Paso 3: Confirmar instalación')"
+                      title="Clic para ampliar imagen">
+                      <img src="img/confirmacion-instalacion.jpeg" alt="Confirmar instalación"
+                        class="install-frame-img">
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Pasos iPhone / Safari -->
               <div class="os-tab-content" id="osTabIos">
-                <div class="ppt-steps">
-                  <div class="ppt-step-row blue">
-                    <span class="ppt-step-num">1</span>
-                    <div class="ppt-step-desc">Abre <b>Safari</b> e ingresa al portal (<code>/my/asignaciones</code>)
-                      con tu usuario y contraseña.</div>
+                <div class="install-steps-grid grid-2x2">
+                  <div class="install-step-card ios">
+                    <div class="install-step-top">
+                      <span class="install-step-num">1</span>
+                      <span class="install-step-heading">Ingresa al portal</span>
+                    </div>
+                    <div class="install-step-desc">Abre <b>Safari</b> e inicia sesión en Odoo con tus credenciales.
+                    </div>
+                    <div class="install-step-frame"
+                      onclick="expandImage('img/mis-asignaciones.png', 'iPhone - Paso 1: Ingreso a Odoo')"
+                      title="Clic para ampliar imagen">
+                      <img src="img/mis-asignaciones.png" alt="Mis Asignaciones" class="install-frame-img">
+                    </div>
                   </div>
-                  <div class="ppt-step-row blue">
-                    <span class="ppt-step-num">2</span>
-                    <div class="ppt-step-desc">Toca el botón <b>Compartir</b> (<i class="mdi mdi-export-variant"></i> el
-                      recuadro con flecha arriba en la barra inferior de Safari).</div>
+
+                  <div class="install-step-card ios">
+                    <div class="install-step-top">
+                      <span class="install-step-num">2</span>
+                      <span class="install-step-heading">Botón Compartir</span>
+                    </div>
+                    <div class="install-step-desc">Toca el botón <b>Compartir</b> (<i
+                        class="mdi mdi-export-variant"></i>) en la barra inferior de Safari.</div>
+                    <div class="install-step-frame"
+                      onclick="expandImage('img/compartir-ios.jpeg', 'iPhone - Paso 2: Botón Compartir')"
+                      title="Clic para ampliar imagen">
+                      <img src="img/compartir-ios.jpeg" alt="Botón Compartir en Safari" class="install-frame-img">
+                    </div>
                   </div>
-                  <div class="ppt-step-row blue">
-                    <span class="ppt-step-num">3</span>
-                    <div class="ppt-step-desc">Desliza hacia abajo en el menú y toca <b>«Agregar a pantalla de
-                        inicio»</b> (<i class="mdi mdi-plus-box-outline"></i>).</div>
+
+                  <div class="install-step-card ios">
+                    <div class="install-step-top">
+                      <span class="install-step-num">3</span>
+                      <span class="install-step-heading">Pantalla de inicio</span>
+                    </div>
+                    <div class="install-step-desc">Desliza en el menú y toca <b>«Agregar a pantalla de inicio»</b> (<i
+                        class="mdi mdi-plus-box-outline"></i>).</div>
+                    <div class="install-step-frame"
+                      onclick="expandImage('img/agregar-pantalla-inicio.png', 'iPhone - Paso 3: Agregar a pantalla de inicio')"
+                      title="Clic para ampliar imagen">
+                      <img src="img/agregar-pantalla-inicio.png" alt="Agregar a pantalla de inicio"
+                        class="install-frame-img">
+                    </div>
                   </div>
-                  <div class="ppt-step-row blue">
-                    <span class="ppt-step-num">4</span>
-                    <div class="ppt-step-desc">Toca <b>Agregar</b> arriba a la derecha. El ícono quedará instalado en tu
-                      pantalla de inicio.</div>
+
+                  <div class="install-step-card ios">
+                    <div class="install-step-top">
+                      <span class="install-step-num">4</span>
+                      <span class="install-step-heading">Confirmar instalación</span>
+                    </div>
+                    <div class="install-step-desc">Toca <b>«Agregar»</b> arriba a la derecha. El ícono quedará en tu
+                      pantalla.</div>
+                    <div class="install-step-frame"
+                      onclick="expandImage('img/confirmacion-ios.jpeg', 'iPhone - Paso 4: Confirmar')"
+                      title="Clic para ampliar imagen">
+                      <img src="img/confirmacion-ios.jpeg" alt="Confirmación iOS" class="install-frame-img">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -134,7 +197,8 @@
           <!-- Columna Video Demostrativo -->
           <div class="slide-video-col">
             <div class="slide-video-topbar">
-              <span id="videoTitleSlide0"><i class="mdi mdi-android"></i> Video: Instalación en Android</span>
+              <span id="videoTitleSlide0"><img src="img/android-logo.png" alt="Android" class="os-title-icon"> Video:
+                Instalación en Android</span>
               <button type="button" class="btn-expand-video" id="btnExpandSlide0" onclick="clickSlide0Video()">
                 <i class="mdi mdi-arrow-expand-all"></i> Ampliar
               </button>
@@ -155,9 +219,9 @@
       </section>
 
       <!-- ==============================================
-           DIAPOSITIVA 2: 1. CARGA OBLIGATORIA
+           DIAPOSITIVA 2: 2. CARGA OBLIGATORIA
            ============================================== -->
-      <section class="slide-card" id="slide-1" data-index="1">
+      <section class="slide-card single-col" id="slide-1" data-index="1">
         <div class="slide-header">
           <div class="slide-badge-wrap">
             <span class="slide-topic-badge" style="background:#fffbeb; color:#b45309; border-color:#fde68a;">
@@ -169,55 +233,26 @@
         </div>
 
         <div class="slide-body">
-          <div class="slide-content-col">
-            <p class="slide-lead">
+          <div class="slide-content-col focus-layout">
+            <p class="slide-lead focus-lead">
               La aplicación está diseñada para funcionar <b>con o sin conexión a internet</b>, por lo que podrás
               continuar realizando tus actividades incluso cuando no tengas acceso a la red.
             </p>
 
-            <div class="ppt-callout warning">
-              <i class="mdi mdi-alert-decagram"></i>
-              <div>
-                <span class="status-badge-demo"
-                  style="background:#fef3c7; color:#92400e; border-color:#fde68a; margin-bottom:6px;">
+            <div class="mandatory-focus-card">
+              <div class="mandatory-focus-icon">
+                <i class="mdi mdi-alert-decagram"></i>
+              </div>
+              <div class="mandatory-focus-body">
+                <span class="status-badge-demo warning-pill">
                   Paso obligatorio
-                </span><br>
-                <b style="font-size:13.5px;">¡Cada mañana, antes de salir del almacén, debes abrir la aplicación
-                  mientras tengas conexión a internet (Wi-Fi o datos móviles) e iniciar sesión!</b>
+                </span>
+                <p class="mandatory-focus-text">
+                  ¡Antes de salir del almacén, debes abrir la aplicación mientras tengas conexión a internet (Wi-Fi o datos móviles) e iniciar sesión!
+                </p>
               </div>
-            </div>
-
-            <div class="nav-state-card warning">
-              <div class="nav-state-card-header">
-                <h4><i class="mdi mdi-help-circle-outline"></i> ¿Por qué es obligatorio este paso matutino?</h4>
-              </div>
-              <div>
-                Al ingresar a la aplicación con conexión a internet, el celular descargará automáticamente en su memoria
-                interna la información necesaria para que puedas realizar tus actividades durante la ruta, incluso si
-                pierdes la conexión posteriormente.
-              </div>
-              <div class="ppt-steps" style="margin-top:4px;">
-                <div class="ppt-step-row">
-                  <span class="ppt-step-num" style="background:#ea580c;"><i class="mdi mdi-truck"></i></span>
-                  <div class="ppt-step-desc"><b>Ruta activa y unidad:</b> Asignación de vehículo y paradas del día.
-                  </div>
-                </div>
-                <div class="ppt-step-row">
-                  <span class="ppt-step-num" style="background:#ea580c;"><i
-                      class="mdi mdi-map-marker-multiple"></i></span>
-                  <div class="ppt-step-desc"><b>Todas tus entregas:</b> Clientes, direcciones y lista de productos a
-                    entregar.</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-important-note">
-              <i class="mdi mdi-information-outline"></i>
-              <div><b>Importante:</b> Realiza este paso antes de salir del almacén para asegurarte de contar con la
-                información necesaria para trabajar sin conexión.</div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -268,7 +303,8 @@
             </div>
             <div class="slide-video-player-wrap"
               onclick="expandVideo('video/navegacion_en_linea.mp4', '3. Cuando tienes conexión a internet')">
-              <video src="video/navegacion_en_linea.mp4" playsinline preload="auto" id="video-slide-2" muted loop autoplay>
+              <video src="video/navegacion_en_linea.mp4" playsinline preload="auto" id="video-slide-2" muted loop
+                autoplay>
                 Tu navegador no soporta video.
               </video>
               <div class="slide-video-placeholder" id="placeholder-slide-2" style="display:none">
@@ -338,7 +374,8 @@
             </div>
             <div class="slide-video-player-wrap"
               onclick="expandVideo('video/navegacion_offline.mp4', '4. Cuando no tienes conexión a internet')">
-              <video src="video/navegacion_offline.mp4" playsinline preload="auto" id="video-slide-3" muted loop autoplay>
+              <video src="video/navegacion_offline.mp4" playsinline preload="auto" id="video-slide-3" muted loop
+                autoplay>
                 Tu navegador no soporta video.
               </video>
               <div class="slide-video-placeholder" id="placeholder-slide-3" style="display:none">
@@ -398,7 +435,8 @@
 
             <div class="card-important-note success">
               <i class="mdi mdi-check-decagram"></i>
-              <div><b>Importante:</b> La sincronización no se realiza en segundo plano.<br> Cuando tu celular recupere la
+              <div><b>Importante:</b> La sincronización no se realiza en segundo plano.<br> Cuando tu celular recupere
+                la
                 conexión a internet, deberás abrir la aplicación para que se inicie automáticamente el proceso de
                 sincronización. Mantén la aplicación abierta hasta que finalice y aparezca el mensaje de confirmación.
               </div>
@@ -468,6 +506,8 @@
       </div>
       <div class="video-modal-player" id="videoModalPlayer">
         <video id="modalVideoPlayer" controls playsinline></video>
+        <img id="modalImagePlayer" src="" alt="Vista previa de captura"
+          style="display:none; max-width:100%; max-height:80vh; object-fit:contain; border-radius:12px; margin:0 auto; background:#ffffff; padding:6px;">
       </div>
     </div>
   </div>
