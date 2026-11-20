@@ -22,7 +22,7 @@ const steps = [
     avatar: "🛒",
     heading: "Reabastecimiento de artículos",
     explain: "Cuando hay faltantes, prepara la orden de compra para pedir los productos al proveedor.",
-    systemRoute: ["Menú Principal", "Inventario", "Operaciones", "Reabastecimiento"],
+    systemRoute: ["Menú Principal", "Compras", "Órdenes", "Reabastecimiento"],
     systemActionsTitle: "Acción:",
     systemActions: [
       "Dar clic en el botón <b>Orden</b> de cada artículo para generar la orden de compra."
@@ -152,6 +152,8 @@ const steps = [
       "<b>Evidencia:</b><ul class=\"system-sublist\"><li>En el campo <b>Nota</b>, agrega un comentario.</li><li>En el campo de archivo (<b>Fotos</b>), carga la imagen de evidencia.</li><li>Da clic en <b>Guardar evidencia</b>.</li></ul>",
       "<b>Firma de recibido:</b><ul class=\"system-sublist\"><li>En el apartado <b>Firma de recibido</b>, traza la firma dentro del espacio de firma y presiona el botón <b>Firmar</b>.</li><li>Regresa al panel principal de <b>Mis Asignaciones</b>.</li></ul>"
     ],
+    systemNote: "Es obligatorio permitir el acceso a la ubicación de tu dispositivo para poder cargar las evidencias.",
+
     result: "Queda constancia de la entrega o de la incidencia.",
     video: "video/pt9.mp4",
     tag: "",
