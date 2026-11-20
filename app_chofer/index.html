@@ -219,37 +219,91 @@
       </section>
 
       <!-- ==============================================
-           DIAPOSITIVA 2: 2. CARGA OBLIGATORIA
+           DIAPOSITIVA 2: 2. REQUISITOS ANTES DE SALIR A RUTA
            ============================================== -->
-      <section class="slide-card single-col" id="slide-1" data-index="1">
+      <section class="slide-card" id="slide-1" data-index="1">
         <div class="slide-header">
           <div class="slide-badge-wrap">
             <span class="slide-topic-badge" style="background:#fffbeb; color:#b45309; border-color:#fde68a;">
-              <i class="mdi mdi-alert-circle"></i> Fase 02
+              <i class="mdi mdi-clipboard-check-outline"></i> Requisitos
             </span>
-            <h2>2. Carga obligatoria antes de salir a ruta</h2>
+            <h2>2. Requisitos antes de salir a ruta</h2>
           </div>
           <span class="slide-step-indicator">2 / 5</span>
         </div>
 
         <div class="slide-body">
-          <div class="slide-content-col focus-layout">
-            <p class="slide-lead focus-lead">
-              La aplicación está diseñada para funcionar <b>con o sin conexión a internet</b>, por lo que podrás
-              continuar realizando tus actividades incluso cuando no tengas acceso a la red.
+          <div class="slide-content-col">
+            <p class="slide-lead">
+              La aplicación está diseñada para funcionar <b>con o sin conexión a internet</b>, pero antes de salir del almacén es indispensable cumplir con los siguientes requisitos:
             </p>
 
-            <div class="mandatory-focus-card">
-              <div class="mandatory-focus-icon">
-                <i class="mdi mdi-alert-decagram"></i>
-              </div>
-              <div class="mandatory-focus-body">
-                <span class="status-badge-demo warning-pill">
-                  Paso obligatorio
-                </span>
-                <p class="mandatory-focus-text">
+            <div class="requirements-grid">
+              <!-- Requisito 1: Carga con internet -->
+              <div class="req-card warning">
+                <div class="req-card-header">
+                  <div class="req-icon-wrap">
+                    <i class="mdi mdi-wifi-sync"></i>
+                  </div>
+                  <div class="req-meta">
+                    <span class="req-badge">Requisito 01 · Paso obligatorio</span>
+                    <h3 class="req-title">Inicio de sesión con conexión</h3>
+                  </div>
+                </div>
+                <p class="req-body">
                   ¡Antes de salir del almacén, debes abrir la aplicación mientras tengas conexión a internet (Wi-Fi o datos móviles) e iniciar sesión!
                 </p>
+                <div class="req-callout warning">
+                  <i class="mdi mdi-information-outline"></i>
+                  <span>Permite descargar automáticamente tu ruta y entregas en la memoria interna del teléfono.</span>
+                </div>
+              </div>
+
+              <!-- Requisito 2: Acceso a la ubicación -->
+              <div class="req-card danger">
+                <div class="req-card-header">
+                  <div class="req-icon-wrap">
+                    <i class="mdi mdi-map-marker-radius"></i>
+                  </div>
+                  <div class="req-meta">
+                    <span class="req-badge">Requisito 02 · Permiso obligatorio</span>
+                    <h3 class="req-title">Acceso a la ubicación del celular</h3>
+                  </div>
+                </div>
+                <p class="req-body">
+                  Es importante <b>aceptar y permitir el acceso a la ubicación (GPS)</b> cuando el navegador o la aplicación lo solicite.
+                </p>
+                <div class="req-callout danger">
+                  <i class="mdi mdi-alert-circle-outline"></i>
+                  <span>De lo contrario, <b>no se podrán cargar las evidencias fotográficas ni el registro de firmas</b>.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-important-note success" style="width: 100%; justify-content: center; text-align: left;">
+              <i class="mdi mdi-check-circle-outline" style="font-size: 16px; flex-shrink: 0;"></i>
+              <div><b>Recuerda:</b> Cumpliendo estos dos requisitos en el almacén, podrás continuar operando y registrar tus entregas sin problemas durante toda la ruta.</div>
+            </div>
+          </div>
+
+          <!-- Columna Video Demostrativo -->
+          <div class="slide-video-col">
+            <div class="slide-video-topbar">
+              <span><i class="mdi mdi-video-outline"></i> Video: Acceso a Ubicación</span>
+              <button type="button" class="btn-expand-video"
+                onclick="expandVideo('video/acceso_ubicacion.mp4', '2. Acceso a la ubicación')">
+                <i class="mdi mdi-arrow-expand-all"></i> Ampliar
+              </button>
+            </div>
+            <div class="slide-video-player-wrap"
+              onclick="expandVideo('video/acceso_ubicacion.mp4', '2. Acceso a la ubicación')">
+              <video src="video/acceso_ubicacion.mp4" playsinline preload="auto" id="video-slide-1" muted loop autoplay>
+                Tu navegador no soporta video.
+              </video>
+              <div class="slide-video-placeholder" id="placeholder-slide-1" style="display:none">
+                <i class="mdi mdi-video-box"></i>
+                <p>Acceso a Ubicación</p>
+                <span class="hint">Clic para ampliar demostración</span>
               </div>
             </div>
           </div>
@@ -482,7 +536,7 @@
       <!-- Indicadores de bolitas (Dots) -->
       <div class="deck-dots" id="deckDotsContainer">
         <button type="button" class="deck-dot active" onclick="goToSlide(0)" title="1. Instalación"></button>
-        <button type="button" class="deck-dot" onclick="goToSlide(1)" title="2. Carga Obligatoria"></button>
+        <button type="button" class="deck-dot" onclick="goToSlide(1)" title="2. Requisitos"></button>
         <button type="button" class="deck-dot" onclick="goToSlide(2)" title="3. En Línea"></button>
         <button type="button" class="deck-dot" onclick="goToSlide(3)" title="4. Sin Conexión"></button>
         <button type="button" class="deck-dot" onclick="goToSlide(4)" title="5. Sincronización"></button>
